@@ -3,13 +3,21 @@ import { Component,Input,Output, EventEmitter,OnChanges,AfterViewInit,OnDestroy,
 @Component({
   selector: 'app-img',
   templateUrl: './img.component.html',
-  styleUrls: ['./img.component.css']
+  styleUrls: ['./img.component.scss']
 })
 export class ImgComponent implements OnChanges, OnInit , AfterViewInit , OnDestroy{
-  @Input() img:string='';
+  img:string='';
+
+  @Input('img')
+  set changeImg(newImg : string){
+    this.img = newImg;
+    //puedo escribir codigo que se haga una vez que se cambio la imagen
+    console.log('change just img => ', this.img)
+  }
   @Output() loaded = new EventEmitter<string>()
   imageDefault="./../../../assets/images/cargando.gif";
   counter=0;
+  counterFn : number | undefined;
 
   imgError(){
     this.img = this.imageDefault
@@ -33,7 +41,7 @@ export class ImgComponent implements OnChanges, OnInit , AfterViewInit , OnDestr
   ngOnInit(): void {
     //corre antes del render, podemos pasar async, fetch, promesas, solo se llama 1 vez
     console.log('ngOnInit', 'imgValue=>', this.img)
-    window.setInterval(()=>{
+    this.counterFn = window.setInterval(()=>{
       this.counter += 1
       console.log('run counter')
     },1000)
@@ -45,6 +53,7 @@ export class ImgComponent implements OnChanges, OnInit , AfterViewInit , OnDestr
   ngOnDestroy(): void {
     //cuando se borra el componente
     console.log('ngOnDestroy', 'imgValue=>', this.img)
+    window.clearInterval(this.counterFn)
   }
 
 
