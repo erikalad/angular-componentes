@@ -41,10 +41,10 @@ export class ImgComponent implements OnChanges, OnInit , AfterViewInit , OnDestr
   ngOnInit(): void {
     //corre antes del render, podemos pasar async, fetch, promesas, solo se llama 1 vez
     console.log('ngOnInit', 'imgValue=>', this.img)
-    this.counterFn = window.setInterval(()=>{
+ /*    this.counterFn = window.setInterval(()=>{
       this.counter += 1
       console.log('run counter')
-    },1000)
+    },1000) */
   }
   ngAfterViewInit(): void {
     //despues de que se este renderizando, se manejan los hijos. ejecutar eventos
