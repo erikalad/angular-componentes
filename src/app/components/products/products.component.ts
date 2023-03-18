@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from './../../models/product.module'
+import {Product, CreateProduct} from './../../models/product.module'
 import {StoreService} from './../../services/store.service'
 import {ProductsService} from './../../services/products.service'
 
@@ -64,4 +64,17 @@ onShowDetail(id:string){
   })
 }
 
+crateNewProduct(){
+  const product: CreateProduct = {
+    title:'Nuevo producto',
+    description: 'bla bla',
+    images:['http://placeimg.com/640/480/any'],
+    price:1000,
+    categoryId: 2,
+  }
+  this.productsService.create(product)
+  .subscribe(data=>{
+    this.products.unshift(data)
+  })
+}
 }

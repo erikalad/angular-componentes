@@ -13,3 +13,7 @@ export interface Category{
 
 }
 
+export interface CreateProduct extends Omit<Product, 'id' | 'category'>{
+  categoryId: number
+}
+
