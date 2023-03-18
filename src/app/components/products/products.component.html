@@ -11,12 +11,14 @@
   Dia: {{today|timeAgo}}
 </p> -->
 <button (click)="crateNewProduct()">Create</button>
+<button (click)="onShowDetail('121212')">detalle not found</button>
 <div class="products--grid">
 <app-product
 [product]='product' *ngFor="let product of products"
 (addedProduct)="onAddToShoppingCart($event)"
 (showDetail)="onShowDetail($event)"
 ></app-product>
+
 <button (click)="loadMore(this.limit,this.offset)">Load more</button>
 </div>
 

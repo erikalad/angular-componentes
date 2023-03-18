@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient , HttpParams} from '@angular/common/http'
+import { HttpClient , HttpParams , HttpErrorResponse, HttpStatusCode} from '@angular/common/http'
 import { CreateProduct, Product, UpdateProduct } from '../models/product.module';
-import { retry } from 'rxjs/operators'
+import { retry ,catchError} from 'rxjs/operators'
+import { throwError} from 'rxjs'
 import {enviroment} from './../../enviroments/enviroment'
 
 @Injectable({
@@ -28,6 +29,20 @@ export class ProductsService {
 
   getProducts(id:string){
     return this.http.get<Product>(`${this.apiUrl}/${id}`)
+    .pipe(
+      catchError((error: HttpErrorResponse)=>{
+        if(error.status === HttpStatusCode.Conflict){
+          return throwError('Algo está fallando en el server')
+        }
+        if(error.status === HttpStatusCode.NotFound){
+          return throwError('El producto no existe')
+        }
+        if(error.status === HttpStatusCode.Unauthorized){
+          return throwError('No estás autorizado')
+        }
+        return throwError('Ups')
+      })
+    )
   }
 
   create(data: CreateProduct){

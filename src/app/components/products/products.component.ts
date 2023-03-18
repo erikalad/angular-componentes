@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Product, CreateProduct, UpdateProduct} from './../../models/product.module'
 import {StoreService} from './../../services/store.service'
 import {ProductsService} from './../../services/products.service'
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 
 @Component({
   selector: 'app-products',
@@ -36,7 +38,8 @@ export class ProductsComponent implements OnInit {
 
   }
   limit=10;
-  offset=0
+  offset=0;
+  statusDetail: SweetAlert2Module=''
 
 onAddToShoppingCart(product: Product){
 
@@ -58,11 +61,16 @@ toggleProductDetail(){
 
 
 onShowDetail(id:string){
+  this.statusDetail = 'loading'
+  this.toggleProductDetail()
   this.productsService.getProducts(id)
-  .subscribe(data=>{
 
-    this.toggleProductDetail()
+  .subscribe(data=>{
     this.productChosen = data;
+    this.statusDetail='success'
+  }, errorMsg=>{
+    window.alert(errorMsg)
+    this.statusDetail ='error'
   })
 }
 
@@ -113,6 +121,8 @@ loadMore(limit:number,offset:number){
     this.offset += this.limit
 })
 }
+
+
 
 
 }
