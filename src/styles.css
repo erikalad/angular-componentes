@@ -4,6 +4,13 @@
 
   }
 } */
+@import url(./styles/reset.scss);
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&amp;display=swap');
+*{
+  font-family: 'Quicksand', sans-serif;
+}
+
+
 
 img{
   border-radius: 10px;
