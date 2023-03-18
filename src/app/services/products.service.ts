@@ -5,6 +5,8 @@ import { retry ,catchError, map} from 'rxjs/operators'
 import { throwError} from 'rxjs'
 import {enviroment} from './../../enviroments/enviroment'
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -67,5 +69,7 @@ export class ProductsService {
     return this.http.get<Product[]>(this.apiUrl, {
       params:{limit,offset}})
     }
+
+
 
 }

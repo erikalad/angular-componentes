@@ -3,7 +3,8 @@ import {Product, CreateProduct, UpdateProduct} from './../../models/product.modu
 import {StoreService} from './../../services/store.service'
 import {ProductsService} from './../../services/products.service'
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-
+import { zip } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products',
@@ -74,6 +75,9 @@ onShowDetail(id:string){
   })
 }
 
+
+
+
 crateNewProduct(){
   const product: CreateProduct = {
     title:'Nuevo producto',
@@ -120,6 +124,26 @@ loadMore(limit:number,offset:number){
     this.products=this.products.concat(data)
     this.offset += this.limit
 })
+}
+
+//EJEMPLO
+
+readAndUpdate(id:string){
+  this.productsService.getProducts(id)
+  .pipe(
+    switchMap((product)=> this.productsService.update(product.id,{title:'change'})),
+   /*  .subscribe(data=>{
+      console.log(data)
+    }) */
+  )
+  zip(
+    this.productsService.getProducts(id),
+    this.productsService.update(id,{title:'new'})
+  )
+  .subscribe(response=>{
+    const read = response[0];
+    const update = response[1];
+  })
 }
 
 
