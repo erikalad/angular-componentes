@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Product, CreateProduct} from './../../models/product.module'
+import {Product, CreateProduct, UpdateProduct} from './../../models/product.module'
 import {StoreService} from './../../services/store.service'
 import {ProductsService} from './../../services/products.service'
 
@@ -75,6 +75,18 @@ crateNewProduct(){
   this.productsService.create(product)
   .subscribe(data=>{
     this.products.unshift(data)
+  })
+}
+
+updateProduct(){
+  const changes: UpdateProduct ={
+    title:'nuevo title'
+  }
+  const id= this.productChosen.id
+  this.productsService.update(id,changes)
+  .subscribe(data=>{
+   const productIndex = this.products.findIndex(item=> item.id === this.productChosen.id)
+
   })
 }
 }
