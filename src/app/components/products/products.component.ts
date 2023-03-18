@@ -23,6 +23,18 @@ export class ProductsComponent implements OnInit {
 
   products: Product[] = [ ]
   showProductDetail = false
+  productChosen: Product = {
+    id:'',
+    title: '',
+    images: [],
+    price:0,
+    category:{
+      id:'',
+      name:''
+    },
+    description:''
+
+  }
 
 onAddToShoppingCart(product: Product){
   console.log(product)
@@ -46,7 +58,9 @@ toggleProductDetail(){
 onShowDetail(id:string){
   this.productsService.getProducts(id)
   .subscribe(data=>{
-    console.log('product',data)
+    console.log('product',data);
+    this.toggleProductDetail()
+    this.productChosen = data;
   })
 }
 
