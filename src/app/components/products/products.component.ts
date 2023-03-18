@@ -39,7 +39,7 @@ export class ProductsComponent implements OnInit {
   offset=0
 
 onAddToShoppingCart(product: Product){
-  console.log(product)
+
 
   this.storeService.addProduct(product)
   this.total = this.storeService.getTotal()
@@ -48,7 +48,7 @@ onAddToShoppingCart(product: Product){
 ngOnInit(): void {
   this.productsService.getProductsByPage(10,0)
   .subscribe(data=>{
-    console.log(data)
+
     this.products = data
   })
 }
@@ -60,7 +60,7 @@ toggleProductDetail(){
 onShowDetail(id:string){
   this.productsService.getProducts(id)
   .subscribe(data=>{
-    console.log('product',data);
+
     this.toggleProductDetail()
     this.productChosen = data;
   })
@@ -100,11 +100,13 @@ deleteProduct(){
     const productIndex= this.products.findIndex(item=> item.id === this.productChosen.id)
     this.products.splice(productIndex,1)
     this.showProductDetail = false;
-
+    this.limit +=1
+    this.offset=0
+    this.loadMore(this.limit,this.offset)
   })
 }
 
-loadMore(){
+loadMore(limit:number,offset:number){
   this.productsService.getProductsByPage(this.limit,this.offset)
   .subscribe(data=>{
     this.products=this.products.concat(data)

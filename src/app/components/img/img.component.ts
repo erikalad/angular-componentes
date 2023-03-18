@@ -24,7 +24,7 @@ export class ImgComponent implements OnChanges, OnInit , AfterViewInit , OnDestr
   }
 
   imgLoaded(){
-    console.log('log hijo')
+    /* console.log('log hijo') */
     this.loaded.emit(this.img);
   }
 
@@ -36,11 +36,11 @@ export class ImgComponent implements OnChanges, OnInit , AfterViewInit , OnDestr
   }
   ngOnChanges(changes: SimpleChanges): void {
     //corre antes y durante el render y su objetivo es estar actualizando los inputs
-    console.log('ngOnChanges', 'imgValue=>', this.img)
+    /* console.log('ngOnChanges', 'imgValue=>', this.img) */
   }
   ngOnInit(): void {
     //corre antes del render, podemos pasar async, fetch, promesas, solo se llama 1 vez
-    console.log('ngOnInit', 'imgValue=>', this.img)
+/*     console.log('ngOnInit', 'imgValue=>', this.img) */
  /*    this.counterFn = window.setInterval(()=>{
       this.counter += 1
       console.log('run counter')
@@ -48,11 +48,11 @@ export class ImgComponent implements OnChanges, OnInit , AfterViewInit , OnDestr
   }
   ngAfterViewInit(): void {
     //despues de que se este renderizando, se manejan los hijos. ejecutar eventos
-    console.log('ngAfterViewInit', 'imgValue=>', this.img)
+    /* console.log('ngAfterViewInit', 'imgValue=>', this.img) */
   }
   ngOnDestroy(): void {
     //cuando se borra el componente
-    console.log('ngOnDestroy', 'imgValue=>', this.img)
+/*     console.log('ngOnDestroy', 'imgValue=>', this.img) */
     window.clearInterval(this.counterFn)
   }
 
