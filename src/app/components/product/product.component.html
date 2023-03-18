@@ -1,7 +1,10 @@
 <div>
 <!-- <img width='100' [src]="product.image" alt=""> -->
 <app-img [img]="product.image"></app-img>
-<h2>{{product.price}}</h2>
-<p>{{ product.name}}</p>
+<p>{{ product.category}}</p>
+<h2>${{product.price}}</h2>
+<p>{{ product.title}}</p>
+<p>{{ product.description}}</p>
+
 <button (click)="onAddToCart()">Add cart</button>
 </div>
