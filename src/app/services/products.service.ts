@@ -23,6 +23,16 @@ export class ProductsService {
   }
 
   update(id:string, data: any){
-    return this.http.put<UpdateProduct>(`${this.apiUrl}/${id}`, data)
+    return this.http.put<Product>(`${this.apiUrl}/${id}`, data)
   }
+
+  delete(id:string){
+    return this.http.delete<boolean>(`${this.apiUrl}/${id}`)
+  }
+
+  getProductsByPage(limit:number,offset:number){
+    return this.http.get<Product[]>(this.apiUrl, {
+      params:{limit,offset}})
+    }
+
 }
