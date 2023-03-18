@@ -4,6 +4,7 @@
 <p class="product">{{ product.category.name}}</p>
 <h2>{{product.price | currency:'$'}}</h2>
 <p>{{ product.title}}</p>
+<p>{{ product.taxes | currency:'$'}}</p>
 <button (click)="onShowDetail()">Detail</button>
 <button (click)="onAddToCart()">Add cart</button>
 </div>
