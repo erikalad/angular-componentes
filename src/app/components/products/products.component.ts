@@ -22,7 +22,7 @@ export class ProductsComponent implements OnInit {
   }
 
   products: Product[] = [ ]
-
+  showProductDetail = false
 
 onAddToShoppingCart(product: Product){
   console.log(product)
@@ -36,6 +36,17 @@ ngOnInit(): void {
   .subscribe(data=>{
     console.log(data)
     this.products = data
+  })
+}
+toggleProductDetail(){
+  this.showProductDetail = !this.showProductDetail
+}
+
+
+onShowDetail(id:string){
+  this.productsService.getProducts(id)
+  .subscribe(data=>{
+    console.log('product',data)
   })
 }
 
