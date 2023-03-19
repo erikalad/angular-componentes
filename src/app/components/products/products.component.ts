@@ -43,10 +43,10 @@ export class ProductsComponent implements OnInit {
   statusDetail: SweetAlert2Module=''
 
 onAddToShoppingCart(product: Product){
-
-
   this.storeService.addProduct(product)
   this.total = this.storeService.getTotal()
+
+  console.log(this.total)
 }
 
 ngOnInit(): void {
@@ -55,6 +55,8 @@ ngOnInit(): void {
 
     this.products = data
   })
+  this.total = this.storeService.getTotal()
+  console.log(this.total)
 }
 toggleProductDetail(){
   this.showProductDetail = !this.showProductDetail

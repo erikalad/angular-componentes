@@ -1,4 +1,4 @@
-import { Component , OnInit,Output,EventEmitter } from '@angular/core';
+import { Component , OnInit,Output,EventEmitter , } from '@angular/core';
 import { StoreService} from './../../services/store.service'
 import {Product, CreateProduct, UpdateProduct} from './../../models/product.module'
 import {ProductsService} from './../../services/products.service'
@@ -37,13 +37,18 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.storeService.myCart$.subscribe(products => {
     this.counter = products.length
+    this.total = this.storeService.getTotal()
     })
+    this.total = this.storeService.getTotal()
+    console.log(this.total)
   }
 
   showAddToCart(){
     this.activeCart = !this.activeCart
 
   }
+
+
 
   onAddToShoppingCart(product: Product){
 
