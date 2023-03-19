@@ -12,6 +12,16 @@ import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { SwiperModule } from 'swiper/angular';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+/* import { ButtonComponent } from './components/button/button.component'; */
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+registerLocaleData(en);
+
 
 
 @NgModule({
@@ -25,6 +35,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     TimeAgoPipe,
     HighlightDirective,
 
+
   ],
   imports: [
     BrowserModule,
@@ -32,8 +43,12 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     HttpClientModule,
     SwiperModule,
     SweetAlert2Module,
+    NzButtonModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

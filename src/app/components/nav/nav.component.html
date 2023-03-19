@@ -1,6 +1,6 @@
 <div class="show-mobile">
   <div >
-    <button (click)="toggleMenu()">
+    <button type="button" class="btn btn-outline-primary"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="toggleMenu()">
       <img src="./assets/svg/icon_menu.svg" alt="menu">
     </button>
     <a href="">
@@ -12,8 +12,8 @@
     <span class="counter">{{ counter }}</span>
   </div>
   <div class="side-menu" [class.active]="activeMenu">
-    <button (click)="toggleMenu()">Close</button>
-    <ul>
+    <button type="button" class="btn btn-outline-primary"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="toggleMenu()">Close</button>
+    <ul >
       <li><a href="">All</a></li>
       <li><a href="">Clothes</a></li>
       <li><a href="">Electronics</a></li>
@@ -26,7 +26,7 @@
       <a class="logo" href="">
         <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
       </a>
-      <ul>
+      <ul class="ul-nav">
         <li><a href="">All</a></li>
         <li><a href="">Clothes</a></li>
         <li><a href="">Electronics</a></li>
