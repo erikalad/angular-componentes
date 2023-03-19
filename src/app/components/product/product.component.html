@@ -5,10 +5,10 @@
 <h2>{{product.price | currency:'$'}}</h2>
 <p>{{ product.title}}</p>
 <p>{{ product.taxes | currency:'$'}}</p>
-<button type="button" class="btn btn-outline-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="onShowDetail()"><span class="material-icons">
+<a type="button" class="btn btn-outline-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="onShowDetail()"><span class="material-icons">
   info
-  </span></button>
-<button type="button" class="btn btn-outline-primary"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="onAddToCart()"><span class="material-icons">
+  </span></a>
+<a type="button" class="btn btn-outline-primary"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="onAddToCart()"><span class="material-icons">
   add_shopping_cart
-  </span></button>
+  </span></a>
 </div>

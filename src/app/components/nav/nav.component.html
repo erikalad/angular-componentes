@@ -28,7 +28,11 @@
     <a type="button"(click)="showAddToCart()"><span class="material-icons close">
       highlight_off
       </span></a>
-
+      <div *ngIf="myShoppingCart.length === 0">
+        <div class="card text-center"><span class="material-icons">
+          shopping_cart
+          </span>There are no items in the cart </div>
+      </div>
     <div class="card text-center" wiperSlide *ngFor="let product of myShoppingCart">
       <div class="card-header">
         {{product.title}}
