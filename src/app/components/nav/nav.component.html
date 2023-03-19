@@ -22,13 +22,25 @@
 
   <div class="side-cart" [class.active]="activeCart">
     <button type="button" class="btn btn-outline-danger close"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="showAddToCart()">X</button>
-    <p>
-      Amount {{myShoppingCart.length}}
-    </p>
-    <p>
-      Total: ${{total}}
-    </p>
+    <div class="card text-center" wiperSlide *ngFor="let product of myShoppingCart">
+      <div class="card-header">
+        {{product.title}}
+      </div>
+      <div class="card-body">
+        <img  width="10px" [src]="product.images[0]" >
+      </div>
+      <div class="card-footer text-muted">
+        ${{product.price}}
+      </div>
 
+    </div>
+
+    <div>
+      Amount: {{myShoppingCart.length}}
+    </div>
+    <div>
+      Total: ${{total}}
+    </div>
   </div>
 
 </div>
@@ -56,12 +68,26 @@
       <div class="side-cart" [class.active]="activeCart">
         <button type="button" class="btn btn-outline-denger close"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="showAddToCart()">X</button>
 
-        <p>
-          Amount {{myShoppingCart.length}}
-        </p>
-        <p>
+
+        <div class="card text-center" wiperSlide *ngFor="let product of myShoppingCart">
+          <div class="card-header">
+            {{product.title}}
+          </div>
+          <div class="card-body">
+            <img  width="10px" [src]="product.images[0]" >
+          </div>
+          <div class="card-footer text-muted">
+            ${{product.price}}
+          </div>
+
+        </div>
+
+        <div>
+          Amount: {{myShoppingCart.length}}
+        </div>
+        <div>
           Total: ${{total}}
-        </p>
+        </div>
 
       </div>
     </div>

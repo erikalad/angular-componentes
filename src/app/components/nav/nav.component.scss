@@ -42,6 +42,15 @@
   &.active {
     transform: translateX(0);
   }
+  .card{
+    margin:0.5rem
+  }.card-body{
+    padding: 0 !important;
+    margin:0 !important;
+  }img{
+    border-radius: 0px !important;
+  }
+
   }
 
 
@@ -134,7 +143,7 @@
     padding: 1rem;
     position: fixed;
     top: 0;
-    left: 60%;
+    left: 85%;
     bottom: 0;
     right: 0;
     background: white;
@@ -153,7 +162,21 @@
       justify-content: center;
       width: 8% !important;
     }
-}
+    .card{
+      margin:0.5rem;
+      width: 80% !important;
+      .card-body{
+        padding: 0 !important;
+        margin:0 !important;
+      }
+
+    }
+    img{
+      border-radius: 0px !important;
+      max-width: 1000px !important;
+      max-height: 150px !important;
+    }
+  }
 }
 
 /* Large and up */
@@ -169,7 +192,7 @@
     padding: 1rem;
     position: fixed;
     top: 0;
-    left: 60%;
+    left: 85%;
     bottom: 0;
     right: 0;
     background: white;
@@ -187,6 +210,20 @@
       display: flex;
       justify-content: center;
       width: 8% !important;
+    }
+    .card{
+      margin:0.5rem;
+      width: 80% !important;
+      .card-body{
+        padding: 0 !important;
+        margin:0 !important;
+      }
+
+    }
+    img{
+      border-radius: 0px !important;
+      max-width: 1000px !important;
+      max-height: 150px !important;
     }
   }
 
