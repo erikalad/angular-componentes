@@ -1,6 +1,7 @@
+
 <div class="show-mobile">
   <div >
-    <button type="button" class="btn btn-outline-danger close"   style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="toggleMenu()">
+    <button type="button"    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="toggleMenu()">
       <img src="./assets/svg/icon_menu.svg" alt="menu" class="">
     </button>
     <a href="">
@@ -12,16 +13,22 @@
     <span class="counter">{{ counter }}</span>
   </div>
   <div class="side-menu" [class.active]="activeMenu">
-    <button type="button" class="btn btn-outline-primary"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="toggleMenu()">Close</button>
+    <a type="button"(click)="toggleMenu()"><span class="material-icons close">
+      highlight_off
+      </span></a>
+
     <ul >
-      <li><a href="">All</a></li>
+      <li><a href="">All </a></li>
       <li><a href="">Clothes</a></li>
       <li><a href="">Electronics</a></li>
     </ul>
   </div>
 
   <div class="side-cart" [class.active]="activeCart">
-    <button type="button" class="btn btn-outline-danger close"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="showAddToCart()">X</button>
+    <a type="button"(click)="showAddToCart()"><span class="material-icons close">
+      highlight_off
+      </span></a>
+
     <div class="card text-center" wiperSlide *ngFor="let product of myShoppingCart">
       <div class="card-header">
         {{product.title}}
@@ -66,7 +73,9 @@
 
       </div>
       <div class="side-cart" [class.active]="activeCart">
-        <button type="button" class="btn btn-outline-denger close"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="showAddToCart()">X</button>
+        <a type="button"(click)="showAddToCart()"><span class="material-icons close">
+          highlight_off
+          </span></a>
 
 
         <div class="card text-center" wiperSlide *ngFor="let product of myShoppingCart">

@@ -31,17 +31,18 @@
   color:white !important;
 }
 
-.close{
-  border: 1px solid brown !important;
-  border-color: brown !important;
+ .close{
+/*   border: 1px solid brown !important;
+  border-color: brown !important; */
   color:rgb(204, 0, 0) !important;
 }
 .close:hover{
-  border: 1px solid brown !important;
+  /* border: 1px solid brown !important; */
   background-color: brown  !important;
-  border-color: brown !important;
+  /* border-color: brown !important; */
   color:white!important;
-}
+  border-radius: 20px !important;
+} */
 
 img{
   border-radius: 10px;
