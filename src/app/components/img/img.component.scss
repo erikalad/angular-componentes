@@ -1,3 +1,7 @@
 img{
   max-width:100%;
 }
+
+.img-component:hover{
+transform: scale(0.5) !important;
+}

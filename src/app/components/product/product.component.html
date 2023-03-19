@@ -1,6 +1,6 @@
 <div class="product">
 <!-- <img width='100' [src]="product.image" alt=""> -->
-<app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
+<app-img *ngIf="product.images.length > 0" [img]="product.images[0]" class="img-component"></app-img>
 <p class="product">{{ product.category.name}}</p>
 <h2>{{product.price | currency:'$'}}</h2>
 <p>{{ product.title}}</p>

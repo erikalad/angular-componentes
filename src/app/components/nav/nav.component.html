@@ -1,14 +1,14 @@
 <div class="show-mobile">
   <div >
-    <button type="button" class="btn btn-outline-primary"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="toggleMenu()">
-      <img src="./assets/svg/icon_menu.svg" alt="menu">
+    <button type="button" class="btn btn-outline-danger close"   style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="toggleMenu()">
+      <img src="./assets/svg/icon_menu.svg" alt="menu" class="">
     </button>
     <a href="">
       <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
     </a>
-    <a href="">
+    <button class="button-cart" (click)="showAddToCart()">
       <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
-    </a>
+    </button>
     <span class="counter">{{ counter }}</span>
   </div>
   <div class="side-menu" [class.active]="activeMenu">
@@ -19,6 +19,18 @@
       <li><a href="">Electronics</a></li>
     </ul>
   </div>
+
+  <div class="side-cart" [class.active]="activeCart">
+    <button type="button" class="btn btn-outline-danger close"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="showAddToCart()">X</button>
+    <p>
+      Amount {{myShoppingCart.length}}
+    </p>
+    <p>
+      Total: ${{total}}
+    </p>
+
+  </div>
+
 </div>
 <div class="hide-mobile">
   <div>
@@ -35,10 +47,22 @@
     <div class="info">
       <div class="account"></div>
       <div class="cart">
-        <a href="">
+        <button class="button-cart" (click)="showAddToCart()">
           <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
-        </a>
+        </button>
         <span class="counter">{{ counter }}</span>
+
+      </div>
+      <div class="side-cart" [class.active]="activeCart">
+        <button type="button" class="btn btn-outline-denger close"  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="showAddToCart()">X</button>
+
+        <p>
+          Amount {{myShoppingCart.length}}
+        </p>
+        <p>
+          Total: ${{total}}
+        </p>
+
       </div>
     </div>
   </div>

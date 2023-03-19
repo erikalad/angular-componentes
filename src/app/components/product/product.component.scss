@@ -4,4 +4,9 @@ p, h2{
 
 .product{
   margin-top: 2rem;
+
 }
+
+.product:hover{
+  transform: scale(1.1) !important;
+  }
