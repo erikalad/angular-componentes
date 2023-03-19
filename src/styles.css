@@ -44,6 +44,13 @@
   border-radius: 20px !important;
 } */
 
+
+
+
+  .delete:hover{
+    color:white !important
+  }
+
 img{
   border-radius: 10px;
 }
