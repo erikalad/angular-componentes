@@ -12,7 +12,7 @@ import {enviroment} from './../../enviroments/enviroment'
 })
 export class ProductsService {
 
-  private apiUrl =`https://young-sands-07814.herokuapp.com/api/products`
+  private apiUrl =`https://young-sands-07814.herokuapp.com/api`
   constructor(
     private http: HttpClient
   ) { }
@@ -23,7 +23,7 @@ export class ProductsService {
       params = params.set('limit', limit);
       params = params.set('offset', offset);
     }
-    return this.http.get<Product[]>(this.apiUrl,{params})
+    return this.http.get<Product[]>(`${this.apiUrl}/products`,{params})
     .pipe(
       retry(3),
       map(products => products.map(item=>{
@@ -36,7 +36,7 @@ export class ProductsService {
   }
 
   getProducts(id:string){
-    return this.http.get<Product>(`${this.apiUrl}/${id}`)
+    return this.http.get<Product>(`${this.apiUrl}/products/${id}`)
     .pipe(
       catchError((error: HttpErrorResponse)=>{
         if(error.status === HttpStatusCode.Conflict){
@@ -54,21 +54,31 @@ export class ProductsService {
   }
 
   create(data: CreateProduct){
-    return this.http.post<Product>(this.apiUrl, data)
+    return this.http.post<Product>(`${this.apiUrl}/products`, data)
   }
 
   update(id:string, data: any){
-    return this.http.put<Product>(`${this.apiUrl}/${id}`, data)
+    return this.http.put<Product>(`${this.apiUrl}/products/${id}`, data)
   }
 
   delete(id:string){
-    return this.http.delete<boolean>(`${this.apiUrl}/${id}`)
+    return this.http.delete<boolean>(`${this.apiUrl}/products/${id}`)
   }
 
   getProductsByPage(limit:number,offset:number){
     return this.http.get<Product[]>(this.apiUrl, {
       params:{limit,offset}})
     }
+
+  getByCategory(categoryId: string, limit?: number, offset?: number){
+    let params = new HttpParams();
+    if(limit && offset){
+      params = params.set('limit', limit);
+      params = params.set('offset', offset);
+    }
+    return this.http.get<Product[]>(`${this.apiUrl}/categories/${categoryId}/products`, { params })
+
+  }
 
 
 
