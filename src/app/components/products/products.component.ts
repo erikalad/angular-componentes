@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {Product, CreateProduct, UpdateProduct} from './../../models/product.module'
 import {StoreService} from './../../services/store.service'
 import {ProductsService} from './../../services/products.service'
@@ -11,12 +11,11 @@ import { switchMap } from 'rxjs/operators';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
 
   myShoppingCart : Product[] = [];
   total = 0;
-  today= new Date()
-  date = new Date(2021,1,21)
+
   constructor(
     private storeService : StoreService,
     private productsService : ProductsService
@@ -24,7 +23,8 @@ export class ProductsComponent implements OnInit {
     this.myShoppingCart = this.storeService.getShoppingCart()
   }
 
-  products: Product[] = [ ]
+  @Input() products: Product[] = [ ]
+  @Output() loadMore = new EventEmitter();
   showProductDetail = false
   productChosen: Product = {
     id:'',
@@ -42,6 +42,7 @@ export class ProductsComponent implements OnInit {
   offset=0;
   statusDetail: SweetAlert2Module=''
 
+
 onAddToShoppingCart(product: Product){
   this.storeService.addProduct(product)
   this.total = this.storeService.getTotal()
@@ -49,7 +50,7 @@ onAddToShoppingCart(product: Product){
   console.log(this.total)
 }
 
-ngOnInit(): void {
+/* ngOnInit(): void {
   this.productsService.getProductsByPage(10,0)
   .subscribe(data=>{
 
@@ -57,7 +58,8 @@ ngOnInit(): void {
   })
   this.total = this.storeService.getTotal()
   console.log(this.total)
-}
+}*/
+
 toggleProductDetail(){
   this.showProductDetail = !this.showProductDetail
 }
@@ -116,16 +118,20 @@ deleteProduct(){
     this.showProductDetail = false;
     this.limit +=1
     this.offset=0
-    this.loadMore(this.limit,this.offset)
+   /*  this.loadMore(this.limit,this.offset) */
   })
 }
 
-loadMore(limit:number,offset:number){
+ /* loadMore(limit:number,offset:number){
   this.productsService.getProductsByPage(this.limit,this.offset)
   .subscribe(data=>{
     this.products=this.products.concat(data)
     this.offset += this.limit
 })
+} */
+
+onLoardMore(){
+  this.loadMore.emit();
 }
 
 //EJEMPLO
