@@ -1,46 +1,47 @@
-import { Component , OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductsService } from './../../services/products.service'
-import { Product } from 'src/app/models/product.module';
-import { switchMap } from 'rxjs/operators'
+import { switchMap } from 'rxjs/operators';
 
-
-
+import { Product } from '../../models/product.module';
+import { ProductsService } from './../../services/products.service';
 
 @Component({
   selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  template: `<app-products
+    [products]="products"
+    (loadMore)="onLoadMore()"
+  ></app-products>`,
+  styleUrls: ['./category.component.css'],
 })
 export class CategoryComponent implements OnInit {
-
   categoryId: string | null = null;
-  limit=10;
-  offset=0
-  products: Product[] = []
+  limit = 10;
+  offset = 0;
+  products: Product[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private productsService : ProductsService
-  ){
-
-  }
+    private productsService: ProductsService
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap
-    .pipe(
-      switchMap(params =>{
-        this.categoryId = params.get('id');
-      if(this.categoryId){
-       return this.productsService.getByCategory(this.categoryId, this.limit, this.offset )
-      }
-      return []
-      })
-    )
-
-    .subscribe((data) =>{
-          this.products = data;
+      .pipe(
+        switchMap((params) => {
+          this.categoryId = params.get('id');
+          if (this.categoryId) {
+            return this.productsService.getByCategory(
+              this.categoryId,
+              this.limit,
+              this.offset
+            );
+          }
+          return [];
         })
+      )
+      .subscribe((data) => {
+        this.products = data;
+      });
   }
 
   onLoadMore() {

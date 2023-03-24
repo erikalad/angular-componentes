@@ -21,6 +21,7 @@ export class ProductsComponent {
     private productsService : ProductsService
   ){
     this.myShoppingCart = this.storeService.getShoppingCart()
+    console.log(this.myShoppingCart)
   }
 
   @Input() products: Product[] = [ ]
