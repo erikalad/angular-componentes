@@ -2,6 +2,11 @@ import { Component , OnInit,Output,EventEmitter , } from '@angular/core';
 import { StoreService} from './../../services/store.service'
 import {Product, CreateProduct, UpdateProduct} from './../../models/product.module'
 import {ProductsService} from './../../services/products.service'
+import { CategoriesService} from './../../services/categories.service'
+import { Category } from 'src/app/models/categoy.model';
+
+
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -13,12 +18,13 @@ export class NavComponent implements OnInit {
   total = 0;
   today= new Date()
   date = new Date(2021,1,21)
-
+  categories: Category[] = []
   activeCart=false
 
   constructor(
     private storeService : StoreService,
-    private productsService : ProductsService
+    private productsService : ProductsService,
+    private categoriesService : CategoriesService
   ){
     this.myShoppingCart = this.storeService.getShoppingCart()
     this.total = this.storeService.getTotal()
@@ -41,6 +47,7 @@ export class NavComponent implements OnInit {
     })
     this.total = this.storeService.getTotal()
     console.log(this.total)
+    this.getAllCategories()
   }
 
   showAddToCart(){
@@ -57,4 +64,10 @@ export class NavComponent implements OnInit {
     this.total = this.storeService.getTotal()
   }
 
+  getAllCategories(){
+    this.categoriesService.getAll()
+    .subscribe(data =>{
+      this.categories=data
+    })
+  }
 }

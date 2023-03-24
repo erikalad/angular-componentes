@@ -17,11 +17,11 @@
       highlight_off
       </span></a>
 
-    <ul >
-      <li><a routerLink="home">All </a></li>
-      <li><a href="">Clothes</a></li>
-      <li><a href="">Electronics</a></li>
-    </ul>
+      <ul class="ul-nav">
+        <li><a routerLink="home">All </a></li>
+        <li *ngFor="let item of categories"><a [routerLink]="['/category',item.id]">{{item.name}}</a></li>
+
+      </ul>
   </div>
 
   <div class="side-cart" [class.active]="activeCart">
@@ -63,8 +63,8 @@
       </a>
       <ul class="ul-nav">
         <li><a routerLink="home">All </a></li>
-        <li><a href="">Clothes</a></li>
-        <li><a href="">Electronics</a></li>
+        <li *ngFor="let item of categories"><a [routerLink]="['/category',item.id]">{{item.name}}</a></li>
+
       </ul>
     </nav>
     <div class="info">
